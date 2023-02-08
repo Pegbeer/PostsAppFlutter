@@ -1,0 +1,1 @@
+export 'package:posts_app/widgets/custom_app_bar.dart';
