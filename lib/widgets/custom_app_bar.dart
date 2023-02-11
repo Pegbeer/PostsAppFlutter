@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController searchController;
+  final String title;
+  final String hint;
 
-  CustomAppBar({super.key});
+  const CustomAppBar(
+      {super.key,
+      required this.searchController,
+      required this.title,
+      required this.hint});
 
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
     return AppBar(
-      title: const Text("Post", style: TextStyle(color: Colors.white, fontSize: 20)),
+      title: Text(title,
+          style: const TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
       centerTitle: true,
       backgroundColor: primaryColor,
       bottom: PreferredSize(
         preferredSize: preferredSize,
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
-          height: 35,
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          height: 38,
           decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(8))
-          ),
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
           child: TextField(
-            controller: _searchController,
-            decoration: const InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 0,horizontal: 0),
-              hintText: "Search...",
-              prefixIcon: Icon(Icons.search),
-              border: InputBorder.none
-            ),
+            controller: searchController,
+            decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                hintText: hint,
+                prefixIcon: const Icon(Icons.search),
+                border: InputBorder.none),
           ),
         ),
       ),
