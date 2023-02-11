@@ -4,7 +4,7 @@ import 'models/menu_option.dart';
 import 'screens/not_found_screen.dart';
 import 'screens/posts_screens.dart';
 
-class AppRoutes{
+class AppRoutes {
   static const posts = 'posts';
   static const comments = 'comments';
   static const albums = 'albums';
@@ -14,20 +14,18 @@ class AppRoutes{
         route: albums,
         icon: Icons.photo_library_outlined,
         name: 'Albums',
-        screen: const PostsScreen()
-    ),
+        screen: PostsScreen()),
     MenuOption(
         route: comments,
         icon: Icons.comment_outlined,
         name: 'Comments',
-        screen: const PostsScreen()
-    ),
+        screen: PostsScreen()),
   ];
 
   static Map<String, Widget Function(BuildContext)> appRoutes() {
     Map<String, Widget Function(BuildContext)> data = {};
 
-    data.addAll({posts: (BuildContext context) => const PostsScreen()});
+    data.addAll({posts: (BuildContext context) => PostsScreen()});
 
     for (final item in menuOptions) {
       data.addAll({item.route: (_) => item.screen});

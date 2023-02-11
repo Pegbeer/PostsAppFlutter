@@ -5,7 +5,7 @@ import 'package:posts_app/themes/themes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,18 +25,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class App extends StatelessWidget{
-
+class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-        ChangeNotifierProvider(create: (_) => PostsProvider(), lazy: false)],
-        child: const MyApp(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (context) => PostsProvider(), lazy: false)
+      ],
+      child: const MyApp(),
     );
   }
-
-
-
 }
